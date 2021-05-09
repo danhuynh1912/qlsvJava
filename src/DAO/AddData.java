@@ -67,7 +67,7 @@ public class AddData {
     public void add_KyLuat() {
         table.Create_TableKyLuat();
         String kl = "insert into KyLuat values('01','kl01','Đi Muộn','Phạt Tiền','100.000')";
-        String k2 = "insert into KyLuat values('00','kl02','Đi Muộn','Phạt Tiền','200.000')";
+        String k2 = "insert into KyLuat values('02','kl02','Đi Muộn','Phạt Tiền','200.000')";
         
         conn.doSQL(k2);
         conn.doSQL(kl);

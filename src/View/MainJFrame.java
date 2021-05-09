@@ -1489,6 +1489,11 @@ try{
         });
 
         btnsuakl.setText("Sửa");
+        btnsuakl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsuaklActionPerformed(evt);
+            }
+        });
 
         btnxoakl.setText("Xóa");
         btnxoakl.addActionListener(new java.awt.event.ActionListener() {
@@ -2348,7 +2353,7 @@ public void Xoatrang3(){
         tablelop.setModel(new CustonTableLop(sv));
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    // KY LUAT
+    // KY LUAT by TCC
     private void tableklMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableklMouseClicked
         dong = tablekl.getSelectedRow();
         KyLuat as = arr_kyluat.get(dong);
@@ -2369,44 +2374,48 @@ public void Xoatrang3(){
     }
     
     private void btnxoatrangklActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoatrangklActionPerformed
-        // TODO add your handling code here:
         xoaTrangKyLuat();
     }//GEN-LAST:event_btnxoatrangklActionPerformed
 
+    // Sap xep theo msv neu msv trung sap theo mkl
     private void btnsapxepklActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsapxepklActionPerformed
-        // TODO add your handling code here:
          Comparator<KyLuat> c = new Comparator<KyLuat>() {
             @Override
             public int compare(KyLuat o1, KyLuat o2) {
-                return o1.getMsv().compareTo(o2.getMsv());
-//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                if(o1.getMsv().equalsIgnoreCase(o2.getMsv())) {
+                    return o1.getMkl().compareToIgnoreCase(o2.getMkl());
+                }
+                return o1.getMsv().compareToIgnoreCase(o2.getMsv());
             }
             };
             Collections.sort(arr_kyluat,c);
-            loadTableKhenThuong();
+            loadTableKyLuat();
     }//GEN-LAST:event_btnsapxepklActionPerformed
 
     private void btnxoaklActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaklActionPerformed
-        // TODO add your handling code here:
-         // TODO add your handling code here:
         int dlr = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn xóa không ???", "Thông báo", JOptionPane.YES_NO_OPTION);
-        if (dlr == JOptionPane.YES_OPTION) {
+        try {
             dong = tablekl.getSelectedRow();
-            if (dong != -1) {
+            if(dong==-1) throw new Exception("Vui long chon dong");
+            
+            if (dlr == JOptionPane.YES_OPTION) {
                 String makl = arr_kyluat.get(dong).getMkl();
                 String msv = arr_kyluat.get(dong).getMsv();
                 String sql = "delete from KyLuat where makl = '" + makl + "' and msv = '"+ msv +"' " ;
-                conn.doSQL(sql);
 
+                conn.doSQL(sql);
                 arr_kyluat.clear();
-                String sql_lop = "Select * from KyLuat";
-                if (conn.getData_KyLuat(sql_lop) != null) {
-                    arr_kyluat = conn.getData_KyLuat(sql_lop);
+                String sql_kyluat = "Select * from KyLuat";
+                if (conn.getData_KyLuat(sql_kyluat) != null) {
+                    arr_kyluat = conn.getData_KyLuat(sql_kyluat);
                     loadTableKyLuat();
                     xoaTrangKyLuat();
                     JOptionPane.showMessageDialog(this, "Xóa thành công  !!!");
                 }  
             }
+            dong=-1;
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(jpnKt, e.getMessage());
         }
     }//GEN-LAST:event_btnxoaklActionPerformed
 
@@ -2418,23 +2427,59 @@ public void Xoatrang3(){
         String tenKyLuat =txttkl.getText();
         String hinhThucKyLuat =  txthtkl.getText();
         String mucDoKyLuat =txtmdkl.getText();
-          
-        String insertKyLuat = "insert into KyLuat values('" + msv + "','" + maKyLuat + "','" + tenKyLuat + "','" + hinhThucKyLuat + "','" + mucDoKyLuat + "')";
-            conn.doSQL(insertKyLuat);
-        arr_kyluat.clear();
+        
         try {
-        String sql = "Select * from KyLuat";
-        if (conn.getData_KyLuat(sql) != null) {
-            arr_kyluat = conn.getData_KyLuat(sql);
-            loadTableKyLuat();
-            xoaTrangKyLuat();
-            JOptionPane.showMessageDialog(this, "Thêm thành công !"); 
-        }
-        }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
+            if(msv.equals("")) throw new Exception("MSV không được để trống");
+            if(maKyLuat.equals("")) throw new Exception("Ma ky luat không được để trống");
+            if(tenKyLuat.equals("")) throw new Exception("Ten ky luat không được để trống");
+            if(hinhThucKyLuat.equals("")) throw new Exception("Hinh thuc không được để trống");
+            if(mucDoKyLuat.equals("")) throw new Exception("Muc do không được để trống");
+            
+            String insertKyLuat = "insert into KyLuat values('" + msv + "','" + maKyLuat + "','" + tenKyLuat + "','" + hinhThucKyLuat + "','" + mucDoKyLuat + "')";
+            conn.doSQL(insertKyLuat);
+            arr_kyluat.clear();
+            String sql = "Select * from KyLuat";
+            if (conn.getData_KyLuat(sql) != null) {
+                arr_kyluat = conn.getData_KyLuat(sql);
+                loadTableKyLuat();
+                xoaTrangKyLuat();
+                JOptionPane.showMessageDialog(this, "Thêm thành công !"); 
+            }   
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
     }//GEN-LAST:event_btnthemklActionPerformed
+
+    private void btnsuaklActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaklActionPerformed
+        // TODO add your handling code here:
+        
+        String maSinhVien = txtmsvkl.getText();
+        String maKyLuat = txtmkl.getText();
+        String tenKyLuat = txttkl.getText();
+        String hinhThuc = txthtkl.getText();
+        String mucDo = txtmdkl.getText();
+        
+        try {
+//            if(maSinhVien.equals("")) throw new Exception("MSV không được để trống");
+//            if(maKyLuat.equals("")) throw new Exception("Ma ky luat không được để trống");
+            if(tenKyLuat.equals("")) throw new Exception("Ten ky luat không được để trống");
+            if(hinhThuc.equals("")) throw new Exception("Hinh thuc không được để trống");
+            if(mucDo.equals("")) throw new Exception("Muc do không được để trống");
+            
+            String kyluat = "update KyLuat set tenkl='" + tenKyLuat + "',hinhthuc='" + hinhThuc + "', mucdo='"+ mucDo +"'"
+                + "where msv = '" + maSinhVien + "' and makl= '"+ maKyLuat +"' ";
+            conn.doSQL(kyluat);
+            arr_Lop.clear();
+            String sql = "Select * from KyLuat";
+            if (conn.getData_KyLuat(sql) != null) {
+                arr_kyluat = conn.getData_KyLuat(sql);
+                loadTableKyLuat();
+                JOptionPane.showMessageDialog(this, "Sửa thành công !!!");
+            }
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+    }//GEN-LAST:event_btnsuaklActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Utility;
 
 import Model.KyLuat;
@@ -10,14 +5,9 @@ import Model.SinhVien;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
-/**
- *
- * @author Admin
- */
 public class KyLuatCustomTable extends AbstractTableModel{
-    
-    private String names[] = {"MSV", "Tên Vi Phạm","Hình Thức", "Mức độ"};
-    private Class classes[] = {String.class, String.class, String.class, String.class};
+    private String names[] = {"MSV","Mã kỷ luật" ,"Tên Vi Phạm","Hình Thức", "Mức độ"};
+    private Class classes[] = {String.class,String.class, String.class, String.class, String.class};
     
     ArrayList<KyLuat> kyLuatList = new ArrayList<>();
 
@@ -42,10 +32,12 @@ public class KyLuatCustomTable extends AbstractTableModel{
             case 0:
                 return kyLuatList.get(rowIndex).getMsv();
             case 1:
-                return kyLuatList.get(rowIndex).getTenkyluat();
+                return kyLuatList.get(rowIndex).getMkl();
             case 2:
-                return kyLuatList.get(rowIndex).getHinhthuc();
+                return kyLuatList.get(rowIndex).getTenkyluat();
             case 3:
+                return kyLuatList.get(rowIndex).getHinhthuc();
+            case 4:
                 return kyLuatList.get(rowIndex).getMucdo();
         }
         return null;
