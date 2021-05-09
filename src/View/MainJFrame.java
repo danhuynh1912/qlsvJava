@@ -1099,12 +1099,32 @@ try{
         jpnView.add(jpnKt, "card3");
 
         btnthemgd.setText("Thêm");
+        btnthemgd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnthemgdActionPerformed(evt);
+            }
+        });
 
         btnsuagd.setText("Sửa");
+        btnsuagd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsuagdActionPerformed(evt);
+            }
+        });
 
         btnxoagd.setText("Xóa");
+        btnxoagd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnxoagdActionPerformed(evt);
+            }
+        });
 
         btnxoatranggd.setText("Xóa Trắng");
+        btnxoatranggd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnxoatranggdActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -1212,6 +1232,11 @@ try{
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablegd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablegdMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(tablegd);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -2480,6 +2505,190 @@ public void Xoatrang3(){
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
     }//GEN-LAST:event_btnsuaklActionPerformed
+    // =========GIA ĐÌNH START===========
+    public void XoatrangGD() {
+        txtmsvgd.setText("");
+        txttenbo.setText("");
+        txttuoibo.setText("");
+        txtdiachi.setText("");
+        txtdantocbo.setText("");
+        txtsdtbo.setText("");
+        txtnghenghiepbo.setText("");
+
+        txttenme.setText("");
+        txttuoime.setText("");
+        txtdiachime.setText("");
+        txtdantocme.setText("");
+        txtsdtme.setText("");
+        txtnghenghiepme.setText("");
+
+        txttenace.setText("");
+        txttuoiace.setText("");
+        txtdiachiace.setText("");
+        txtdantocace.setText("");
+        txtsdtace.setText("");
+        txtnghenghiepace.setText("");
+    }
+    
+    private void btnthemgdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemgdActionPerformed
+        // TODO add your handling code here:
+        String msv = txtmsvgd.getText();
+        String tenBo = txttenbo.getText();
+        String tuoiBo = txttuoibo.getText();
+        String diachiBo = txtdiachi.getText();
+        String dantocBo = txtdantocbo.getText();
+        String soBo = txtsdtbo.getText();
+        String ngheBo = txtnghenghiepbo.getText();
+
+        String tenMe = txttenme.getText();
+        String tuoiMe = txttuoime.getText();
+        String diachiMe = txtdiachime.getText();
+        String dantocMe = txtdantocme.getText();
+        String soMe = txtsdtme.getText();
+        String ngheMe = txtnghenghiepme.getText();
+
+        String tenAce = txttenace.getText();
+        String tuoiAce = txttuoiace.getText();
+        String diachiAce = txtdiachiace.getText();
+        String dantocAce = txtdantocace.getText();
+        String soAce = txtsdtace.getText();
+        String ngheAce = txtnghenghiepace.getText();
+
+        String giaDinh1 = "insert into GiaDinh values('" + msv + "','"
+                + tenBo + "','" + tuoiBo + "','" + ngheBo + "','" + diachiBo + "','" + soBo + "','" + dantocBo + "','"
+                + tenMe + "','" + tuoiMe + "','" + ngheMe + "','" + diachiMe + "','" + soMe + "','" + dantocMe + "','"
+                + tenAce + "','" + tuoiAce + "','" + ngheAce + "','" + diachiAce + "','" + soAce + "','" + dantocAce + "')";
+        try {
+            if (!arr_hocsinh.contains(new SinhVien(msv))) {
+                JOptionPane.showMessageDialog(this, "Không tồn tại sinh viên có mã: " + msv);
+            } else {
+                conn.doSQL(giaDinh1);
+                arr_giadinh.clear();
+                String sql = "Select * from GiaDinh";
+                if (conn.getData_GiaDinh(sql) != null) {
+                    arr_giadinh = conn.getData_GiaDinh(sql);
+                }
+                JOptionPane.showMessageDialog(this, "Thêm thành công thông tin Gia Đình !!!");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        loadTableGiaDinh();
+        XoatrangGD();
+    }//GEN-LAST:event_btnthemgdActionPerformed
+
+    private void tablegdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablegdMouseClicked
+        // TODO add your handling code here:
+        dong = tablegd.getSelectedRow();
+        GiaDinh as = arr_giadinh.get(dong);
+
+        txtmsvgd.setText(as.getMsv());
+
+        txttenbo.setText(as.getTenBo());
+        txttuoibo.setText(as.getTuoiBo());
+        txtdiachi.setText(as.getDiachiBo());
+        txtdantocbo.setText(as.getDantocBo());
+        txtsdtbo.setText(as.getSoBo());
+        txtnghenghiepbo.setText(as.getNgheBo());
+
+        txttenme.setText(as.getTenme());
+        txttuoime.setText(as.getTuoiMe());
+        txtdiachime.setText(as.getDiachiMe());
+        txtdantocme.setText(as.getDantocMe());
+        txtsdtme.setText(as.getSoMe());
+        txtnghenghiepme.setText(as.getNgheMe());
+
+        txttenace.setText(as.getTenAce());
+        txttuoiace.setText(as.getTuoiAce());
+        txtdiachiace.setText(as.getDiachiAce());
+        txtdantocace.setText(as.getDantocAce());
+        txtsdtace.setText(as.getSoAce());
+        txtnghenghiepace.setText(as.getNgheAce());
+
+        dong = -1;
+    }//GEN-LAST:event_tablegdMouseClicked
+
+    private void btnxoatranggdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoatranggdActionPerformed
+        // TODO add your handling code here:
+        XoatrangGD();
+    }//GEN-LAST:event_btnxoatranggdActionPerformed
+
+    private void btnxoagdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoagdActionPerformed
+        // TODO add your handling code here:
+        int row = tablegd.getSelectedRow();
+        if (row != -1) {
+            int dlr = JOptionPane.showConfirmDialog(this, "Xác nhận xoá ?", "Thông báo", JOptionPane.YES_NO_OPTION);
+            if (dlr == JOptionPane.YES_OPTION) {
+
+                String msv = arr_giadinh.get(row).getMsv();
+                String sql = "delete from GiaDinh where msv = '" + msv + "'";
+                conn.doSQL(sql);
+
+                arr_giadinh.clear();
+                String sql_giaDinh = "Select * from GiaDinh";
+                if (conn.getData_GiaDinh(sql_giaDinh) != null) {
+                    arr_giadinh = conn.getData_GiaDinh(sql_giaDinh);
+                    loadTableGiaDinh();
+                    XoatrangGD();
+                    JOptionPane.showMessageDialog(this, "Xóa thành công thông tin Khen thưởng !!!");
+                }
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn phải click chọn dòng cần xoá");
+        }
+    }//GEN-LAST:event_btnxoagdActionPerformed
+
+    private void btnsuagdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuagdActionPerformed
+        // TODO add your handling code here:
+        String msv = txtmsvgd.getText();
+        String tenBo = txttenbo.getText();
+        String tuoiBo = txttuoibo.getText();
+        String diachiBo = txtdiachi.getText();
+        String dantocBo = txtdantocbo.getText();
+        String soBo = txtsdtbo.getText();
+        String ngheBo = txtnghenghiepbo.getText();
+
+        String tenMe = txttenme.getText();
+        String tuoiMe = txttuoime.getText();
+        String diachiMe = txtdiachime.getText();
+        String dantocMe = txtdantocme.getText();
+        String soMe = txtsdtme.getText();
+        String ngheMe = txtnghenghiepme.getText();
+
+        String tenAce = txttenace.getText();
+        String tuoiAce = txttuoiace.getText();
+        String diachiAce = txtdiachiace.getText();
+        String dantocAce = txtdantocace.getText();
+        String soAce = txtsdtace.getText();
+        String ngheAce = txtnghenghiepace.getText();
+        
+        String updateGD = "update GiaDinh set TENBO = '" + tenBo + "', TUOIBO = '" + tuoiBo + "', NGHEBO='" + ngheBo + 
+                "', DIACHIBO='" + diachiBo + "', SOBO='" + soBo + "', DANTOCBO='" + dantocBo + "', TENME='" + tenMe + 
+                "', TUOIME='" + tuoiMe + "', NGHEME='" + ngheMe + "', DIACHIME='" + diachiMe + "', SODTME='" + soMe + "', DANTOCME='" + dantocMe + 
+                "', TENACE='" + tenAce + "', TUOIACE='" + tuoiAce + "', NGHEACE='" + ngheAce + "', DIACHIACE='" + diachiAce + "', SOACE='" + soAce + "', DANTOCACE='" + dantocAce + "' "
+                + "where msv = '" + msv + "'";
+        try {
+            if(arr_hocsinh.contains(new SinhVien(msv))){
+                conn.doSQL(updateGD);
+                arr_giadinh.clear();
+                String sql = "Select * from GiaDinh";
+                if (conn.getData_GiaDinh(sql) != null) {
+                    arr_giadinh = conn.getData_GiaDinh(sql);
+                }
+                loadTableGiaDinh();
+                XoatrangGD();
+                JOptionPane.showMessageDialog(this, "Sửa thành công thông tin Gia Đình !!!");
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Bạn không được sửa mã sinh viên!");
+            }
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnsuagdActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

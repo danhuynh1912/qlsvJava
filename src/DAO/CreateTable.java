@@ -23,18 +23,20 @@ public class CreateTable {
 
     public void Create_TableKhenThuong() {
         String sql = "Create table KhenThuong(msv varchar(50),makt varchar(50) ,"
-                + " tenkt varchar(50), hinhthuc varchar(50))";
+                + " tenkt varchar(50), hinhthuc varchar(50), PRIMARY KEY (msv, makt), FOREIGN KEY (msv) REFERENCES SINHVIEN(msv))";
         conn.doSQL(sql);
     }
 
     public void Create_TableKyLuat() {
         String sql = "Create table KyLuat(msv varchar(50),makl varchar(50) ,"
-                + " tenkl varchar(50), hinhthuc varchar(50),mucdo varchar(50))";
+                + " tenkl varchar(50), hinhthuc varchar(50),mucdo varchar(50), PRIMARY KEY (msv, makl), FOREIGN KEY (msv) REFERENCES SINHVIEN(msv))";
         conn.doSQL(sql);
     }
 
     public void Create_TableGiaDinh() {
-        String sql = "Create table GiaDinh(msv varchar(50),tenbo varchar(50),tuoibo varchar(50), nghebo varchar(50),diachibo varchar(50) ,sobo varchar(50),dantocbo varchar(50) , tenme varchar(50),tuoime varchar(50), ngheme varchar(50),diachime varchar(50) ,sodtme varchar(50),dantocme varchar(50) ,tenace varchar(50),tuoiace varchar(50), ngheace varchar(50),diachiace varchar(50) ,soace varchar(50),dantocace varchar(50))";
+        String sql = "Create table GiaDinh(msv varchar(50), PRIMARY KEY (msv), " + 
+                "FOREIGN KEY (msv) REFERENCES SINHVIEN(msv), " + 
+                "tenbo varchar(50), tuoibo varchar(50), nghebo varchar(50),diachibo varchar(50) ,sobo varchar(50),dantocbo varchar(50) , tenme varchar(50),tuoime varchar(50), ngheme varchar(50),diachime varchar(50) ,sodtme varchar(50),dantocme varchar(50) ,tenace varchar(50),tuoiace varchar(50), ngheace varchar(50),diachiace varchar(50) ,soace varchar(50),dantocace varchar(50))";
         conn.doSQL(sql);
     }
 

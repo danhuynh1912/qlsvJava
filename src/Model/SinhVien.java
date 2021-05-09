@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class SinhVien{
     private String msv,tensv,sdt,diachi,dantoc,lop,cmnd,email,gioitinh;
@@ -20,6 +21,10 @@ public class SinhVien{
         this.gioitinh = gioitinh;
         this.malop = malop;
         this.ngaysinh = ngaysinh;
+    }
+
+    public SinhVien(String msv) {
+        this.msv = msv;
     }
 
     public SinhVien() {
@@ -111,6 +116,31 @@ public class SinhVien{
 
     public Date getNgaysinh() {
         return ngaysinh;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 17 * hash + Objects.hashCode(this.msv);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SinhVien other = (SinhVien) obj;
+        if (!Objects.equals(this.msv, other.msv)) {
+            return false;
+        }
+        return true;
     }
 
 
