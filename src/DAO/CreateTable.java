@@ -5,10 +5,8 @@
  */
 package DAO;
 
-/**
- *
- * @author QuyetChien
- */
+// TCC in here
+
 public class CreateTable {
 
     ConnectDB conn = new ConnectDB();
