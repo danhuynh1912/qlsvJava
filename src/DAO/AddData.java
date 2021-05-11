@@ -27,16 +27,17 @@ public class AddData {
 
     public void add_GiaoVien() {
         table.Create_TableGIAOVIEN();
-        String cbgv1 = "insert into GIAOVIEN values('sv01','Hoàng Quyết Chiến','QuyetChien@gmail.com','123456')";
-        String cbgv2 = "insert into GIAOVIEN values('sv02','Lê Thị Thanh Đào','ThanhDao@gmail.com','123456')";
-        String cbgv3 = "insert into GIAOVIEN values('sv03','Trần Chiến Công','ChienCong@gmail.com','123456')";
-        String cbgv4 = "insert into GIAOVIEN values('sv04','Huỳnh Ngọc Trường Danh','TruongDanh@gmail.com','123456')";
+        String cbgv1 = "insert into GIAOVIEN values('gv01','Hoàng Quyết Chiến','quyetchien','123456')";
+        String cbgv2 = "insert into GIAOVIEN values('gv02','Lê Thị Thanh Đào','thanhdao','123456')";
+        String cbgv3 = "insert into GIAOVIEN values('gv03','Trần Chiến Công','chiencong','123456')";
+        String cbgv4 = "insert into GIAOVIEN values('gv04','Huỳnh Ngọc Trường Danh','truongdanh','123456')";
+        String cbgv5 = "insert into GIAOVIEN values('gv05','Huỳnh Ngọc Trường Danh','admin','123456')";
         
         conn.doSQL(cbgv1);
         conn.doSQL(cbgv2);
         conn.doSQL(cbgv3);
         conn.doSQL(cbgv4);
-
+        conn.doSQL(cbgv5);
     }
 
     public void add_SinhVien() {
@@ -76,10 +77,10 @@ public class AddData {
 
     public void add_GiaDinh() {
         table.Create_TableGiaDinh();
-        String td = "insert into GiaDinh values('sv01','Hoàng Văn Đoàn','33','Nông Dân','Hà Nội','0358725873','Kinh','Dư Thanh Tâm','33','Nông Dân','Hà Nội','0358725873','Kinh','Hoàng Phương Ngân','18','Học Sinh','Hà Nội','0358725873','Kinh')";
-        String td1 = "insert into GiaDinh values('sv02','Lê Văn Đoàn','33','Nông Dân','Hà Nội','0358725873','Kinh','Lê Văn Hoa','33','Nông Dân','Hà Nội','0358725873','Kinh','','','','','','')";
-        String td2 = "insert into GiaDinh values('sv03','Trần Văn Đoàn','33','Nông Dân','Hà Nội','0358725873','Kinh','Lê Văn Hoa','33','Nông Dân','Hà Nội','0358725873','Kinh','Trần Phương Ngân','18','Học Sinh','Hà Nội','0358725873','Kinh')";
-        String td3 = "insert into GiaDinh values('sv04','Huỳnh Văn Đoàn','33','Nông Dân','Hà Nội','0358725873','Kinh','Dư Thanh Tâm','33','Nông Dân','Hà Nội','0358725873','Kinh','Huỳnh Phương Ngân','18','Học Sinh','Hà Nội','0358725873','Kinh')";
+        String td = "insert into GiaDinh values('sv01','Lê Thế Văn','33','Nông Dân','Hà Nội','0358725873','Kinh','Dư Thanh Tâm','33','Nông Dân','Hà Nội','0358725873','Kinh','Ly Ly','18','Học Sinh','Hà Nội','0358725873','Kinh')";
+        String td1 = "insert into GiaDinh values('sv02','Lê Văn Đoàn','33','Nông Dân','Hà Nội','0358725873','Kinh','Lê Văn Hoa','33','Nông Dân','Hà Nội','0358725873','Kinh','Lê Thị Ngân','20','Học sinh','Hà nội','0384215655','Kinh')";
+        String td2 = "insert into GiaDinh values('sv03','Lý Văn Sầu','33','Nông Dân','Hà Nội','0358725873','Kinh','Lê Văn Hoa','33','Nông Dân','Hà Nội','0358725873','Kinh','Lê Thị Ngân','18','Học Sinh','Hà Nội','0358725873','Kinh')";
+        String td3 = "insert into GiaDinh values('sv04','Lý Thế Văn','33','Nông Dân','Hà Nội','0358725873','Kinh','Dư Thanh Tâm','33','Nông Dân','Hà Nội','0358725873','Kinh','Lý Thị Ly','18','Học Sinh','Hà Nội','0358725873','Kinh')";
         conn.doSQL(td);
         conn.doSQL(td1);
         conn.doSQL(td2);
