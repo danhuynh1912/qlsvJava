@@ -3,13 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Danh/Java/QLSV1/QLSV/src/DAO/CreateTable.java</file>
-            <file>file:/D:/Danh/Java/QLSV1/QLSV/src/View/TrangChinhJPanel.java</file>
-            <file>file:/D:/Danh/Java/QLSV1/QLSV/src/View/DoiMatKhauJPanel.java</file>
-            <file>file:/D:/Danh/Java/QLSV1/QLSV/src/DAO/ConnectDB.java</file>
-            <file>file:/D:/Danh/Java/QLSV1/QLSV/src/Main/Main.java</file>
-            <file>file:/D:/Danh/Java/QLSV1/QLSV/src/View/MainJFrame.java</file>
-            <file>file:/D:/Danh/Java/QLSV1/QLSV/src/DAO/AddData.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL_FINAK/qlsvJava/src/View/DangNhapJFrame.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL_FINAK/qlsvJava/src/DAO/ConnectDB.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL_FINAK/qlsvJava/src/Utility/KyLuatCustomTable.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL_FINAK/qlsvJava/src/DAO/AddData.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL_FINAK/qlsvJava/src/Model/KyLuat.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL_FINAK/qlsvJava/src/Main/Main.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL_FINAK/qlsvJava/src/View/MainJFrame.java</file>
         </group>
     </open-files>
 </project-private>
