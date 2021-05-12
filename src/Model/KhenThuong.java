@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.Objects;
+
 /**
  *
  * @author Admin
@@ -14,6 +16,42 @@ public class KhenThuong {
 
     public KhenThuong() {
     }
+
+    public KhenThuong(String msv) {
+        this.msv = msv;
+    }
+    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final KhenThuong other = (KhenThuong) obj;
+        if (!Objects.equals(this.msv, other.msv)) {
+            return false;
+        }
+        if (!Objects.equals(this.makt, other.makt)) {
+            return false;
+        }
+        return true;
+    }
+
+    public KhenThuong(String msv, String makt) {
+        this.msv = msv;
+        this.makt = makt;
+    }
+
+
 
     public KhenThuong(String msv, String makt, String tenkt, String hinhthuckt) {
         this.msv = msv;

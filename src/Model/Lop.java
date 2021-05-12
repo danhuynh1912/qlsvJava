@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.Objects;
+
 /**
  *
  * @author Admin
@@ -19,6 +21,27 @@ public class Lop {
         this.gvcn = gvcn;
         this.siso = siso;
         this.nganh= Nganh;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Lop other = (Lop) obj;
+        if (!Objects.equals(this.malop, other.malop)) {
+            return false;
+        }
+        return true;
     }
 
     public Lop(String malop) {

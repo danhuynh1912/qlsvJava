@@ -23,7 +23,7 @@ public class CreateTable {
 
     public void Create_TableKhenThuong() {
         String sql = "Create table KhenThuong(msv varchar(50),makt varchar(50) ,"
-                + " tenkt varchar(50), hinhthuc varchar(50), PRIMARY KEY (msv, makt), FOREIGN KEY (msv) REFERENCES SINHVIEN(msv))";
+                + " tenkt varchar(50), hinhthuc varchar(50), PRIMARY KEY (msv, makt))";
         conn.doSQL(sql);
     }
 

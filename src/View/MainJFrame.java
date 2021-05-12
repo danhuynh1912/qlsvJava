@@ -383,7 +383,6 @@ try{
         tablelop = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1420, 870));
 
         jpnMenu.setBackground(new java.awt.Color(0, 102, 0));
 
@@ -1588,6 +1587,8 @@ try{
 
         jLabel27.setText("Ngành");
 
+        txtss.setText("0");
+
         btntheml.setText("Thêm");
         btntheml.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1939,26 +1940,37 @@ try{
                 gt = String.valueOf(rdnu.getText()) ;
           }
            String lop1 = "insert into SinhVien values('" + msv + "','" + ten + "','" + ns + "','" + gt + "','" + dc + "','" + sdt + "','" + email + "','" + dt + "','" + cmnd + "','" + tenlop + "','" + malop + "')";
-            conn.doSQL(lop1);
-        arr_hocsinh.clear();
+           
         try {
+            if(txtmsv.getText().equals("")||txttsv.getText().equals("")||txtns.getText().equals("")||txtemail.getText().equals("")||txtcmnd.getText().equals("")||txtdt.getText().equals("")||txtdc.getText().equals("")||txtstd.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Bạn cần điền đầy đủ thông tin vào ô trống !!! ", "Thông báo", JOptionPane.OK_OPTION);
+            } else {
+             if(arr_hocsinh.contains(new SinhVien(txtmsv.getText()))){
+                JOptionPane.showMessageDialog(this, "Mã Sinh Viên Đã có !!! ", "Thông báo", JOptionPane.OK_OPTION);
+            }
+            else {
+        
+        conn.doSQL(lop1);
+        arr_hocsinh.clear();
         String sql = "Select * from SINHVIEN";
         if (conn.getData_SinhVien(sql) != null) {
             arr_hocsinh = conn.getData_SinhVien(sql);
+        }
+        JOptionPane.showMessageDialog(this, "Thêm thành công thông tin sinh viên !!!");  
+        }
         }
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
 
         }
-        
         loadTableSinhVien();
         Xoatrang1();
         cbmlsv.removeAllItems();
         loadComboMaLop1();
         cblopsv.removeAllItems();
         loadComboTenLop();
-        JOptionPane.showMessageDialog(this, "Thêm thành công thông tin sinh viên !!!");  
+        
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
@@ -1984,23 +1996,42 @@ try{
           }
           String lop1 = "update SinhVien set Hoten = '" + ten + "', ngaysinh = '" + ns + "',gioitinh='" + gt + "',diachi='" + dc + "',SDT='" + sdt + "',email='" + email + "',dantoc='" + dt + "',CMND='" + cmnd + "',lop='" + tenlop + "',malop='" + malop + "' "
                 + "where msv = '" + msv + "'";
+          try {
+               if(txtmsv.getText().equals("")||txttsv.getText().equals("")||txtns.getText().equals("")||txtemail.getText().equals("")||txtcmnd.getText().equals("")||txtdt.getText().equals("")||txtdc.getText().equals("")||txtstd.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Bạn cần điền đầy đủ thông tin vào ô trống !!! ", "Thông báo", JOptionPane.OK_OPTION);
+            } else{
+                   if(!arr_hocsinh.contains(new SinhVien(txtmsv.getText()))){
+                JOptionPane.showMessageDialog(this, "Mã Sinh Viên Không có !!! ", "Thông báo", JOptionPane.OK_OPTION);
+            } else {
             conn.doSQL(lop1);
             arr_hocsinh.clear();
         String sql = "Select * from SinhVien";
         if (conn.getData_SinhVien(sql) != null) {
             arr_hocsinh = conn.getData_SinhVien(sql);
-            loadTableSinhVien();
+            
+            JOptionPane.showMessageDialog(this, "Sửa thành công thông tin sinh viên !!!");
+        }
+          }
+               }
+          }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+
+        }
+        
+        loadTableSinhVien();
             Xoatrang1();
             cbmlsv.removeAllItems();
             loadComboMaLop1();
             cblopsv.removeAllItems();
             loadComboTenLop();
-            JOptionPane.showMessageDialog(this, "Sửa thành công thông tin sinh viên !!!");
-        }
     }//GEN-LAST:event_btnsuaActionPerformed
 
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
         // TODO add your handling code here:
+        if(!arr_hocsinh.contains(new SinhVien(txtmsv.getText()))){
+                JOptionPane.showMessageDialog(this, "Mã Sinh Viên không có !!! ", "Thông báo", JOptionPane.OK_OPTION);
+                } else{
         int dlr = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn xóa không ???", "Thông báo", JOptionPane.YES_NO_OPTION);
         if (dlr == JOptionPane.YES_OPTION) {
             dong = tablesv.getSelectedRow();
@@ -2008,21 +2039,22 @@ try{
                 String masv = arr_hocsinh.get(dong).getMsv();
                 String sql = "delete from SinhVien where msv = '" + masv + "'";
                 conn.doSQL(sql);
-
                 arr_hocsinh.clear();
                 String sql_lop = "Select * from SinhVien";
                 if (conn.getData_SinhVien(sql_lop) != null) {
                     arr_hocsinh = conn.getData_SinhVien(sql_lop);
+                    JOptionPane.showMessageDialog(this, "Xóa thành công thông tin sinh viên !!!");
+                }  
+            }
+            }
+        }
+        
                     loadTableSinhVien();
                     Xoatrang1();
                     cbmlsv.removeAllItems();
                     loadComboMaLop1();
                     cblopsv.removeAllItems();
                     loadComboTenLop();
-                    JOptionPane.showMessageDialog(this, "Xóa thành công thông tin sinh viên !!!");
-                }  
-            }
-        }
     }//GEN-LAST:event_btnxoaActionPerformed
 
     private void btnxoatrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoatrangActionPerformed
@@ -2104,14 +2136,19 @@ public void Xoatrang2(){
           
           
         String lop1 = "insert into KhenThuong values('" + msv + "','" + mkt + "','" + tkt + "','" + ht + "')";
-            conn.doSQL(lop1);
+           try {
+               if(txtmsvkt.getText().equals("")||txtmkt.getText().equals("")||txttkt.getText().equals("")||txthtkt.getText().equals("")){
+                   JOptionPane.showMessageDialog(this, "Bạn chưa điền đủ thông tin !!! ", "Thông báo", JOptionPane.OK_OPTION);
+               } else {
+        conn.doSQL(lop1);
         arr_khenthuong.clear();
-        try {
         String sql = "Select * from KhenThuong";
         if (conn.getData_KhenThuong(sql) != null) {
             arr_khenthuong = conn.getData_KhenThuong(sql);
         }
+        JOptionPane.showMessageDialog(this, "Thêm thành công thông tin khen thưởng !!!"); 
         }
+           }
         catch (Exception e) {
             System.out.println(e.getMessage());
 
@@ -2119,12 +2156,15 @@ public void Xoatrang2(){
         
         loadTableKhenThuong();
         Xoatrang2();
-        JOptionPane.showMessageDialog(this, "Thêm thành công thông tin khen thưởng !!!"); 
+        
         
     }//GEN-LAST:event_btnthemktActionPerformed
 
     private void btnxoaktActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaktActionPerformed
         // TODO add your handling code here:
+        if(!arr_khenthuong.contains(new KhenThuong(txtmsvkt.getText(),txtmkt.getText()))){
+                JOptionPane.showMessageDialog(this, "Chưa đủ thông tin mã!!! ", "Thông báo", JOptionPane.OK_OPTION);
+                } else{
         int dlr = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn xóa không ???", "Thông báo", JOptionPane.YES_NO_OPTION);
         if (dlr == JOptionPane.YES_OPTION) {
             dong = tablekt.getSelectedRow();
@@ -2146,7 +2186,7 @@ public void Xoatrang2(){
             }
         }
     }//GEN-LAST:event_btnxoaktActionPerformed
-
+    }
     private void btnsuaktActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaktActionPerformed
         // TODO add your handling code here:    
           String msv = txtmsvkt.getText();
@@ -2155,15 +2195,30 @@ public void Xoatrang2(){
           String ht =txthtkt.getText();
           String lop1 = "update KhenThuong set makt = '" + mkt + "', tenkt = '" + tkt + "',hinhthuc='" + ht + "' "
                 + "where msv = '" + msv + "'";
+          try{
+              if(txtmsvkt.getText().equals("")||txtmkt.getText().equals("")||txttkt.getText().equals("")||txthtkt.getText().equals("")){
+                   JOptionPane.showMessageDialog(this, "Bạn chưa điền đủ thông tin !!! ", "Thông báo", JOptionPane.OK_OPTION);
+               } else {if(!arr_khenthuong.contains(new KhenThuong(txtmsvkt.getText(),txtmkt.getText()))){
+                JOptionPane.showMessageDialog(this, "Chưa đủ thông tin mã !!! ", "Thông báo", JOptionPane.OK_OPTION);
+                } else{
             conn.doSQL(lop1);
             arr_khenthuong.clear();
         String sql = "Select * from Khenthuong";
         if (conn.getData_KhenThuong(sql) != null) {
             arr_khenthuong = conn.getData_KhenThuong(sql);
         }
+         JOptionPane.showMessageDialog(this, "Sửa thành công thông tin Khen Thưởng !!!");
+          }
+              }
+          }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+
+        }
+          
         loadTableKhenThuong();
         Xoatrang2();
-        JOptionPane.showMessageDialog(this, "Sửa thành công thông tin Khen Thưởng !!!");
+       
     }//GEN-LAST:event_btnsuaktActionPerformed
 
     private void btnxoatrangktActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoatrangktActionPerformed
@@ -2191,15 +2246,22 @@ public void Xoatrang2(){
           String malop = txtmll.getText();
           String tenlop = txttll.getText();
           String gvcn = cbgvcn.getSelectedItem().toString();
-          String lop1 = "insert into Lop values('" + malop + "','" + tenlop + "'," + ss + ",'" + gvcn + "','" + nganh + "')";
+         
+           try {
+               if(txtnganh.getText().equals("")||txtss.getText().equals("")||txtmll.getText().equals("")||txttll.getText().equals("")){
+                   JOptionPane.showMessageDialog(this, "Bạn cần điền đầy đủ thông tin vào ô trống !!! ", "Thông báo", JOptionPane.OK_OPTION);
+               }else{
+                    String lop1 = "insert into Lop values('" + malop + "','" + tenlop + "'," + ss + ",'" + gvcn + "','" + nganh + "')";
           conn.doSQL(lop1);
         arr_Lop.clear();
-        try {
+       
         String sql = "Select * from Lop";
         if (conn.getData_Lop(sql) != null) {
             arr_Lop = conn.getData_Lop(sql);
         }
+        JOptionPane.showMessageDialog(this, "Thêm thành công thông tin Lớp !!!");
         }
+           }
         catch (Exception e) {
             System.out.println(e.getMessage());
 
@@ -2211,12 +2273,12 @@ public void Xoatrang2(){
         cbgvcn.removeAllItems();
         loadComboGVCN();
 
-        JOptionPane.showMessageDialog(this, "Thêm thành công thông tin Lớp !!!");
+        
         
     }//GEN-LAST:event_btnthemlActionPerformed
 public void Xoatrang3(){
     txtnganh.setText("");
-    txtss.setText("");
+    txtss.setText("0");
     txttll.setText("");
     txtmll.setText("");
 }
@@ -2228,7 +2290,17 @@ public void Xoatrang3(){
           String malop = txtmll.getText();
           String tenlop = txttll.getText();
           String gvcn = cbgvcn.getSelectedItem().toString();
-          String lop1 = "update Lop set tenlop = '" + tenlop + "', siso = " + ss + ",giaovienchunhiem='" + gvcn + "',nganh='" + nganh + "' "
+          Lop a = new Lop(malop);
+          
+          try{
+              if(txtnganh.getText().equals("")||txtss.getText().equals("")||txtmll.getText().equals("")||txttll.getText().equals("")||cbgvcn.getSelectedItem().equals("")){
+                   JOptionPane.showMessageDialog(this, "Bạn cần điền đầy đủ thông tin vào ô trống !!! ", "Thông báo", JOptionPane.OK_OPTION);
+               }
+              else{
+                  if(!arr_Lop.contains(a)){
+                      JOptionPane.showMessageDialog(this, "Mã Lớp không có !!! ", "Thông báo", JOptionPane.OK_OPTION);
+                  }else{
+                  String lop1 = "update Lop set tenlop = '" + tenlop + "', siso = " + ss + ",giaovienchunhiem='" + gvcn + "',nganh='" + nganh + "' "
                 + "where malop = '" + malop + "'";
             conn.doSQL(lop1);
             arr_Lop.clear();
@@ -2236,19 +2308,29 @@ public void Xoatrang3(){
         if (conn.getData_Lop(sql) != null) {
             arr_Lop = conn.getData_Lop(sql);
         }
+        JOptionPane.showMessageDialog(this, "Sửa thành công thông tin Lớp !!!");
+          }
+          }
+          }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
 
+        }
         loadBangLop();
         Xoatrang3();
         
         cbgvcn.removeAllItems();
         loadComboGVCN();
 
-        JOptionPane.showMessageDialog(this, "Sửa thành công thông tin Lớp !!!");
+        
         
     }//GEN-LAST:event_btnsualActionPerformed
 
     private void btnxoalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoalActionPerformed
         // TODO add your handling code here:
+        if(!arr_Lop.contains(new Lop(txtmll.getText()))){
+                      JOptionPane.showMessageDialog(this, "Mã Lớp không có !!! ", "Thông báo", JOptionPane.OK_OPTION);
+                  }else{
         int dlr = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn xóa không ???", "Thông báo", JOptionPane.YES_NO_OPTION);
         if (dlr == JOptionPane.YES_OPTION) {
             dong = tablelop.getSelectedRow();
@@ -2269,6 +2351,7 @@ public void Xoatrang3(){
         loadComboGVCN();
                 JOptionPane.showMessageDialog(this, "Xóa thành công thông tin Lớp học !!!");
             }
+        }
         }
     }//GEN-LAST:event_btnxoalActionPerformed
 
