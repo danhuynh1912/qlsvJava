@@ -15,8 +15,8 @@ import javax.swing.table.AbstractTableModel;
  * @author Admin
  */
 public class KhenThuongCustomTable extends AbstractTableModel{
-    private String names[] = {"MSV", "Thành tích", "Hình thức khen thưởng"};
-    private Class classes[] = {String.class, String.class, String.class};
+    private String names[] = {"MSV","Mã khen thưởng", "Thành tích", "Hình thức khen thưởng"};
+    private Class classes[] = {String.class,String.class, String.class, String.class};
     
     ArrayList<KhenThuong> khenThuongList = new ArrayList<>();
 
@@ -41,8 +41,10 @@ public class KhenThuongCustomTable extends AbstractTableModel{
             case 0:
                 return khenThuongList.get(rowIndex).getMsv();
             case 1:
-                return khenThuongList.get(rowIndex).getTenkt();
+                return khenThuongList.get(rowIndex).getMakt();
             case 2:
+                return khenThuongList.get(rowIndex).getTenkt();
+            case 3:
                 return khenThuongList.get(rowIndex).getHinhthuckt();
         }
         return null;

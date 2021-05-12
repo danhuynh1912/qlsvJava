@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/btl_java/qlsvJava/src/View/DangNhapJFrame.java</file>
-            <file>file:/D:/btl_java/qlsvJava/src/View/MainJFrame.java</file>
-            <file>file:/D:/btl_java/qlsvJava/src/Main/Main.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL2_FINAL/qlsvJava/src/DAO/CreateTable.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL2_FINAL/qlsvJava/src/DAO/ConnectDB.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL2_FINAL/qlsvJava/src/View/TrangChinhJPanel.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL2_FINAL/qlsvJava/src/DAO/AddData.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL2_FINAL/qlsvJava/src/Model/KhenThuong.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL2_FINAL/qlsvJava/src/View/DoiMatKhauJPanel.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL2_FINAL/qlsvJava/src/View/MainJFrame.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL2_FINAL/qlsvJava/src/View/DangNhapJFrame.java</file>
         </group>
     </open-files>
 </project-private>

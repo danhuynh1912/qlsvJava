@@ -15,11 +15,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author PC
-  // Chiến
- */
 public class DangNhapJFrame extends javax.swing.JFrame {
 ArrayList<CanBoGiaoVien> arr_CanBo = new ArrayList<>();
     ConnectDB conn = new ConnectDB();
@@ -59,6 +54,7 @@ ArrayList<CanBoGiaoVien> arr_CanBo = new ArrayList<>();
      */
     public DangNhapJFrame() {
         initComponents();
+        setResizable(false);
         setLocationRelativeTo(null);
         DuLieu();
     }
