@@ -963,7 +963,7 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="txtXuat">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t b&#xe1;o c&#xe1;o"/>
+                    <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t Exel"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtXuatActionPerformed"/>

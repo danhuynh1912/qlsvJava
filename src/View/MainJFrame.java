@@ -885,7 +885,7 @@ try{
                         .addContainerGap())))
         );
 
-        txtXuat.setText("Xuất báo cáo");
+        txtXuat.setText("Xuất Exel");
         txtXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtXuatActionPerformed(evt);
