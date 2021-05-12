@@ -2645,12 +2645,12 @@ public void Xoatrang3(){
         // TODO add your handling code here:
         final String excelFile = "SinhVien.xlsx";
         
-        arr_hocsinh.clear();
+        ArrayList<SinhVien> ds = new ArrayList<>();
         String sql_sv = "Select * from SinhVien";
         try {
             if (conn.getData_KhenThuong(sql_sv) == null) throw new Exception("Loi khi xuat file");
-            arr_hocsinh = conn.getData_SinhVien(sql_sv);
-            CreateExel.taoExcel(arr_hocsinh, excelFile);
+            ds = conn.getData_SinhVien(sql_sv);
+            CreateExel.taoExcel(ds, excelFile);
             JOptionPane.showMessageDialog(this, "Xuất thành công");
         }catch(Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
