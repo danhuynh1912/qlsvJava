@@ -23,9 +23,14 @@ ArrayList<CanBoGiaoVien> arr_CanBo = new ArrayList<>();
      * Creates new form DangNhapJFrame
      */
     public void DuLieu() {
-        add_dulieu.add_GiaoVien();
+        
         String sql_cbgv = "select * from GIAOVIEN";
-        arr_CanBo = conn.getData_CBGV(sql_cbgv);
+        if (conn.getData_CBGV(sql_cbgv) != null) {
+                 arr_CanBo = conn.getData_CBGV(sql_cbgv);
+            } else {
+                add_dulieu.add_GiaoVien();
+        }
+       
     }
      public void CenteredFrame(javax.swing.JFrame objFrame) {
         Dimension objDimension = Toolkit.getDefaultToolkit().getScreenSize();

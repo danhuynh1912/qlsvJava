@@ -45,6 +45,4 @@ public class CreateTable {
                 + "taikhoan varchar(50), matkhau varchar(50))";
         conn.doSQL(sql);
     }
-
-    
 }
