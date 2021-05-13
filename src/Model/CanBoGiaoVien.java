@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.Objects;
+
 /**
  *
  * @author Quang Vinh
@@ -18,6 +20,12 @@ public class CanBoGiaoVien {
     public CanBoGiaoVien() {
     }
 
+    public CanBoGiaoVien(String taikhoan, String matkhau) {
+        this.taikhoan = taikhoan;
+        this.matkhau = matkhau;
+    }
+
+
     public CanBoGiaoVien(String magv, String hoTen, String taikhoan, String matkhau) {
         this.magv = magv;
         this.hoTen = hoTen;
@@ -25,6 +33,32 @@ public class CanBoGiaoVien {
         this.matkhau = matkhau;
         
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CanBoGiaoVien other = (CanBoGiaoVien) obj;
+        if (!Objects.equals(this.taikhoan, other.taikhoan)) {
+            return false;
+        }
+        if (!Objects.equals(this.matkhau, other.matkhau)) {
+            return false;
+        }
+        return true;
+    }
+
+
 
     
     
