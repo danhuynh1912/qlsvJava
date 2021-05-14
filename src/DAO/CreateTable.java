@@ -17,13 +17,13 @@ public class CreateTable {
 
     public void Create_TableSinhVien() {
         String sql = "Create table SINHVIEN(msv varchar(50) primary key,Hoten varchar(50),ngaysinh date, "
-                + " gioitinh varchar(50), diachi varchar(50),SDT varchar(50),email varchar(50),dantoc varchar(50), CMND varchar(50),lop varchar(50),malop varchar(50))";
+                + " gioitinh varchar(50), diachi varchar(50),SDT varchar(50),email varchar(50),dantoc varchar(50), CMND varchar(50),lop varchar(50),malop varchar(50), FOREIGN KEY (malop) REFERENCES Lop(malop))";
         conn.doSQL(sql);
     }
 
     public void Create_TableKhenThuong() {
         String sql = "Create table KhenThuong(msv varchar(50),makt varchar(50) ,"
-                + " tenkt varchar(50), hinhthuc varchar(50), PRIMARY KEY (msv, makt))";
+                + " tenkt varchar(50), hinhthuc varchar(50), PRIMARY KEY (msv, makt), FOREIGN KEY (msv) REFERENCES SINHVIEN(msv))";
         conn.doSQL(sql);
     }
 
