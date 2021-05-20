@@ -65,24 +65,7 @@ public class MainJFrame extends javax.swing.JFrame {
         loadTableGiaDinh();
         loadTableKhenThuong();
         loadTableKyLuat();
-
         loadComboTenLop();
-
-        
-        
-        //ChuyenManHinhConTroller controller = new ChuyenManHinhConTroller(jpnView);
-        //controller.setView(jpnTrangChinh, jlbTrangChinh);
-        
-        
-        // Menu
-//        List<DanhMucBean> listItem = new ArrayList<>();
-//        listItem.add(new DanhMucBean("TrangChinh", jpnTrangChinh, jlbTrangChinh));
-//        listItem.add(new DanhMucBean("SinhVien", jpnSinhVien, jlbSinhVien));
-//        listItem.add(new DanhMucBean("KyLuat", jpnKyLuat, jlbKyLuat));
-//        listItem.add(new DanhMucBean("KhenThuong", jpnKhenThuong, jlbKhenThuong));
-//        listItem.add(new DanhMucBean("Lop", jpnLop, jlbLop));
-//        listItem.add(new DanhMucBean("DoiMatKhau", jpnDoiMatKhau, jlbDoiMatKhau));
-//        controller.setEvent(listItem);
     }
     public void CenteredFrame(javax.swing.JFrame objFrame) {
         Dimension objDimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -106,8 +89,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         // add dữ liệu của cán bộ
         try{
-        
-        String sql_cbgv = "select * from GIAOVIEN";
+            String sql_cbgv = "select * from GIAOVIEN";
         if (conn.getData_CBGV(sql_cbgv) != null) {
             arr_CBGV = conn.getData_CBGV(sql_cbgv);
         } else {
@@ -118,8 +100,6 @@ public class MainJFrame extends javax.swing.JFrame {
             System.out.println(e.getMessage());
 
         }
-
-      
             // add dữ liệu của hs
         try{
             
@@ -132,50 +112,41 @@ public class MainJFrame extends javax.swing.JFrame {
         }
             catch (Exception e) {
             System.out.println(e.getMessage());
-
         }
        
-try{
-            
+        try{
             String sql_kt = "select * from KhenThuong";
             if (conn.getData_KhenThuong(sql_kt) != null) {
                 arr_khenthuong = conn.getData_KhenThuong(sql_kt);
             } else {
                 duLieu.add_KhenThuong();
             }
-    }
+        }
             catch (Exception e) {
             System.out.println(e.getMessage());
-
         }
 
-
-
-            try{
-            
+        try{
             String sql_kl = "select * from KyLuat";
-            if (conn.getData_KyLuat(sql_kl) != null) {
-                arr_kyluat = conn.getData_KyLuat(sql_kl);
-            } else {
-                duLieu.add_KyLuat();
-            }
-            }
-            catch (Exception e) {
-            System.out.println(e.getMessage());
-
+        if (conn.getData_KyLuat(sql_kl) != null) {
+            arr_kyluat = conn.getData_KyLuat(sql_kl);
+        } else {
+            duLieu.add_KyLuat();
         }
-      
-
-            try{
-            
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        try{
             String sql_gd = "select * from GiaDinh";
-            if (conn.getData_GiaDinh(sql_gd) != null) {
-                arr_giadinh = conn.getData_GiaDinh(sql_gd);
-            } else {
-                duLieu.add_GiaDinh();
-            }
-            }
-            catch (Exception e) {
+        if (conn.getData_GiaDinh(sql_gd) != null) {
+            arr_giadinh = conn.getData_GiaDinh(sql_gd);
+        } else {
+            duLieu.add_GiaDinh();
+        }
+        }
+        catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -185,41 +156,40 @@ try{
     public void loadTableSinhVien() {
         tablesv.setModel(new CustomTableSinhVien(arr_hocsinh));
     }
-     public void loadComboGVCN() {
+    public void loadComboGVCN() {
         for (int i = 0; i < arr_CBGV.size(); i++) {
             cbgvcn.addItem(arr_CBGV.get(i).getHoTen());
         }
     }
-      public void loadComboMaLop1() {
+    public void loadComboMaLop1() {
         for (int i = 0; i < arr_Lop.size(); i++) {
             cbmlsv.addItem(arr_Lop.get(i).getMalop());
         }
-      }
-      public void loadComboTenLop() {
+    }
+    public void loadComboTenLop() {
         for (int i = 0; i < arr_Lop.size(); i++) {
             cblopsv.addItem(arr_Lop.get(i).getTenlop());
         }
     }
-     
-     public void loadTableGiaDinh() {
+    public void loadTableGiaDinh() {
         tablegd.setModel(new CustomTableGiaDinh(arr_giadinh));
     }
-     public void loadTableKyLuat() {
+    public void loadTableKyLuat() {
         tablekl.setModel(new KyLuatCustomTable(arr_kyluat));
     }
-      public void loadTableKhenThuong() {
+    public void loadTableKhenThuong() {
         tablekt.setModel(new KhenThuongCustomTable(arr_khenthuong));
     }
-      private void Xoatrang1(){
-          txtmsv.setText("");
-          txttsv.setText("");
-          txtstd.setText("");
-          txtns.setText("");
-          txtdt.setText("");
-          txtdc.setText("");
-          txtcmnd.setText("");
-          txtemail.setText("");  
-      }
+    private void xoaTrangSinhVien(){
+        txtmsv.setText("");
+        txttsv.setText("");
+        txtstd.setText("");
+        txtns.setText("");
+        txtdt.setText("");
+        txtdc.setText("");
+        txtcmnd.setText("");
+        txtemail.setText("");  
+    }
       
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -271,20 +241,20 @@ try{
         cbmlsv = new javax.swing.JComboBox();
         cblopsv = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
-        btnthem = new javax.swing.JButton();
-        btnsapxep = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
+        btnSapXep = new javax.swing.JButton();
         btnxoa = new javax.swing.JButton();
-        btntailai = new javax.swing.JButton();
-        btnxoatrang = new javax.swing.JButton();
-        btnsua = new javax.swing.JButton();
+        btnTaiLai = new javax.swing.JButton();
+        btnXoaTrang = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablesv = new javax.swing.JTable();
         jPanel13 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         rdtkmsv = new javax.swing.JRadioButton();
         rdtkml = new javax.swing.JRadioButton();
-        jButton7 = new javax.swing.JButton();
-        txtXuat = new javax.swing.JButton();
+        btnTimKiem = new javax.swing.JButton();
+        btnXuat = new javax.swing.JButton();
         jLabel60 = new javax.swing.JLabel();
         jpnKt = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -435,14 +405,14 @@ try{
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(474, Short.MAX_VALUE)
+                .addContainerGap(542, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(523, 523, 523))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(10, 10, 10)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -581,7 +551,7 @@ try{
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jpnLop.setBackground(new java.awt.Color(0, 204, 0));
@@ -780,17 +750,17 @@ try{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnthem.setText("Thêm");
-        btnthem.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnthemActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
 
-        btnsapxep.setText("Sắp Xếp");
-        btnsapxep.addActionListener(new java.awt.event.ActionListener() {
+        btnSapXep.setText("Sắp Xếp");
+        btnSapXep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsapxepActionPerformed(evt);
+                btnSapXepActionPerformed(evt);
             }
         });
 
@@ -801,24 +771,24 @@ try{
             }
         });
 
-        btntailai.setText("Tải Lại");
-        btntailai.addActionListener(new java.awt.event.ActionListener() {
+        btnTaiLai.setText("Tải Lại");
+        btnTaiLai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btntailaiActionPerformed(evt);
+                btnTaiLaiActionPerformed(evt);
             }
         });
 
-        btnxoatrang.setText("Xóa Trắng");
-        btnxoatrang.addActionListener(new java.awt.event.ActionListener() {
+        btnXoaTrang.setText("Xóa Trắng");
+        btnXoaTrang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnxoatrangActionPerformed(evt);
+                btnXoaTrangActionPerformed(evt);
             }
         });
 
-        btnsua.setText("Sửa");
-        btnsua.addActionListener(new java.awt.event.ActionListener() {
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsuaActionPerformed(evt);
+                btnSuaActionPerformed(evt);
             }
         });
 
@@ -830,29 +800,29 @@ try{
                 .addGap(28, 28, 28)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnxoa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnthem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnxoatrang, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
+                    .addComponent(btnThem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnXoaTrang, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnsua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnsapxep, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                    .addComponent(btntailai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSapXep, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                    .addComponent(btnTaiLai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(19, 19, 19))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnsua, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(btnthem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSua, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(btnThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnsapxep, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSapXep, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnxoa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnxoatrang, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btntailai, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnXoaTrang, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTaiLai, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         tablesv.setModel(new javax.swing.table.DefaultTableModel(
@@ -882,17 +852,17 @@ try{
         buttonGroup2.add(rdtkml);
         rdtkml.setText("Mã Lớp");
 
-        jButton7.setText("Tìm Kiếm");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnTimKiem.setText("Tìm Kiếm");
+        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnTimKiemActionPerformed(evt);
             }
         });
 
-        txtXuat.setText("Xuất Exel");
-        txtXuat.addActionListener(new java.awt.event.ActionListener() {
+        btnXuat.setText("Xuất Exel");
+        btnXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtXuatActionPerformed(evt);
+                btnXuatActionPerformed(evt);
             }
         });
 
@@ -911,11 +881,11 @@ try{
                             .addComponent(rdtkml)
                             .addComponent(rdtkmsv))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton7))
+                        .addComponent(btnTimKiem))
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtXuat)
+                    .addComponent(btnXuat)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                         .addComponent(jLabel60)
                         .addGap(12, 12, 12)))
@@ -936,8 +906,8 @@ try{
                         .addComponent(rdtkml))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                            .addComponent(txtXuat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnTimKiem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                            .addComponent(btnXuat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
 
@@ -1831,7 +1801,7 @@ try{
                 .addGroup(jpnLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpnLLayout.createSequentialGroup()
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 84, Short.MAX_VALUE))
+                        .addGap(0, 86, Short.MAX_VALUE))
                     .addComponent(jScrollPane4))
                 .addContainerGap())
         );
@@ -2036,7 +2006,7 @@ try{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnMenuLayout.createSequentialGroup()
@@ -2053,7 +2023,7 @@ try{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)
+            .addComponent(jpnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
         );
 
         pack();
@@ -2119,190 +2089,187 @@ try{
         jpnView.revalidate();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
+    // SINH VIEN
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-          
-          ButtonGroup gb = new ButtonGroup();
-            gb.add(rdnu);
-            gb.add(rdnam);
-          String msv = txtmsv.getText();
-          String ten = txttsv.getText();
-          String sdt =txtstd.getText();
-          String ns =txtns.getText();
-          String dt =txtdt.getText();
-          String dc =txtdc.getText();
-          String cmnd =txtcmnd.getText();
-          String email =txtemail.getText();
-          String malop = cbmlsv.getSelectedItem().toString();
-          String tenlop = cblopsv.getSelectedItem().toString();
-          
-          if(rdnam.isSelected()){
-               gt = String.valueOf(rdnam.getText()) ;
-          }
-          if(rdnu.isSelected()){
-                gt = String.valueOf(rdnu.getText()) ;
-          }
-           String lop1 = "insert into SinhVien values('" + msv + "','" + ten + "','" + ns + "','" + gt + "','" + dc + "','" + sdt + "','" + email + "','" + dt + "','" + cmnd + "','" + tenlop + "','" + malop + "')";
-           
+        String msv = txtmsv.getText();
+        String ten = txttsv.getText();
+        String sdt = txtstd.getText();
+        String ns = txtns.getText();
+        String dt = txtdt.getText();
+        String dc = txtdc.getText();
+        String cmnd = txtcmnd.getText();
+        String email = txtemail.getText();
+        String malop = cbmlsv.getSelectedItem().toString();
+        String tenlop = cblopsv.getSelectedItem().toString();
+        String gt="";
+        if(rdnam.isSelected()){
+            gt = String.valueOf(rdnam.getText()) ;
+        }
+        if(rdnu.isSelected()){
+            gt = String.valueOf(rdnu.getText()) ;
+        }
+        String lop1 = "insert into SinhVien values('" + msv + "','" + ten + "','" + ns + "','" + gt + "','" + dc + "','" + sdt + "','" + email + "','" + dt + "','" + cmnd + "','" + tenlop + "','" + malop + "')";
+
         try {
-            if(txtmsv.getText().equals("")||txttsv.getText().equals("")||txtns.getText().equals("")||txtemail.getText().equals("")||txtcmnd.getText().equals("")||txtdt.getText().equals("")||txtdc.getText().equals("")||txtstd.getText().equals("")){
-                JOptionPane.showMessageDialog(this, "Bạn cần điền đầy đủ thông tin vào ô trống !!! ", "Thông báo", JOptionPane.OK_OPTION);
+            if(txtmsv.getText().equals("")||txttsv.getText().equals("")||txtns.getText().equals("")||txtemail.getText().equals("")||txtcmnd.getText().equals("")||txtdt.getText().equals("")||txtdc.getText().equals("")||txtstd.getText().equals("")||gt.equals("")){
+                throw new Exception("Bạn cần cung cấp đầy đủ thông tin !!! ");
+            } else { 
+            if(arr_hocsinh.contains(new SinhVien(txtmsv.getText()))){
+                throw new Exception("Mã sinh viên đã tồn tại !!! ");
             } else {
-             if(arr_hocsinh.contains(new SinhVien(txtmsv.getText()))){
-                JOptionPane.showMessageDialog(this, "Mã Sinh Viên Đã có !!! ", "Thông báo", JOptionPane.OK_OPTION);
+                conn.doSQL(lop1);
+                arr_hocsinh.clear();
+                String sql = "Select * from SINHVIEN";
+                if (conn.getData_SinhVien(sql) != null) {
+                    arr_hocsinh = conn.getData_SinhVien(sql);
+                }
+                JOptionPane.showMessageDialog(this, "Thêm thành công thông tin sinh viên !!!");  
+                }
             }
-            else {
-        
-        conn.doSQL(lop1);
-        arr_hocsinh.clear();
-        String sql = "Select * from SINHVIEN";
-        if (conn.getData_SinhVien(sql) != null) {
-            arr_hocsinh = conn.getData_SinhVien(sql);
-        }
-        JOptionPane.showMessageDialog(this, "Thêm thành công thông tin sinh viên !!!");  
-        }
-        }
         }
         catch (Exception e) {
-            System.out.println(e.getMessage());
-
+            JOptionPane.showMessageDialog(this, e.getMessage());  
         }
         loadTableSinhVien();
-        Xoatrang1();
+        xoaTrangSinhVien();
         cbmlsv.removeAllItems();
         loadComboMaLop1();
         cblopsv.removeAllItems();
         loadComboTenLop();
-        
-    }//GEN-LAST:event_btnthemActionPerformed
+    }//GEN-LAST:event_btnThemActionPerformed
 
-    private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
-          ButtonGroup gb = new ButtonGroup();
-          gb.add(rdnu);
-          gb.add(rdnam);
-          String msv = txtmsv.getText();
-          String ten = txttsv.getText();
-          String sdt =txtstd.getText();
-          String ns =txtns.getText();
-          String dt =txtdt.getText();
-          String dc =txtdc.getText();
-          String cmnd =txtcmnd.getText();
-          String email =txtemail.getText();
-          String malop = cbmlsv.getSelectedItem().toString();
-          String tenlop = cblopsv.getSelectedItem().toString();
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        String msv = txtmsv.getText();
+        String ten = txttsv.getText();
+        String sdt =txtstd.getText();
+        String ns =txtns.getText();
+        String dt =txtdt.getText();
+        String dc =txtdc.getText();
+        String cmnd =txtcmnd.getText();
+        String email =txtemail.getText();
+        String malop = cbmlsv.getSelectedItem().toString();
+        String tenlop = cblopsv.getSelectedItem().toString();
+        String gt="";
           
-          if(rdnam.isSelected()){
-               gt = String.valueOf(rdnam.getText()) ;
-          }
-          if(rdnu.isSelected()){
-                gt = String.valueOf(rdnu.getText()) ;
-          }
-          String lop1 = "update SinhVien set Hoten = '" + ten + "', ngaysinh = '" + ns + "',gioitinh='" + gt + "',diachi='" + dc + "',SDT='" + sdt + "',email='" + email + "',dantoc='" + dt + "',CMND='" + cmnd + "',lop='" + tenlop + "',malop='" + malop + "' "
-                + "where msv = '" + msv + "'";
-          try {
-               if(txtmsv.getText().equals("")||txttsv.getText().equals("")||txtns.getText().equals("")||txtemail.getText().equals("")||txtcmnd.getText().equals("")||txtdt.getText().equals("")||txtdc.getText().equals("")||txtstd.getText().equals("")){
-                JOptionPane.showMessageDialog(this, "Bạn cần điền đầy đủ thông tin vào ô trống !!! ", "Thông báo", JOptionPane.OK_OPTION);
-            } else{
-                   if(!arr_hocsinh.contains(new SinhVien(txtmsv.getText()))){
-                JOptionPane.showMessageDialog(this, "Mã Sinh Viên Không có !!! ", "Thông báo", JOptionPane.OK_OPTION);
-            } else {
-            conn.doSQL(lop1);
-            arr_hocsinh.clear();
-        String sql = "Select * from SinhVien";
-        if (conn.getData_SinhVien(sql) != null) {
-            arr_hocsinh = conn.getData_SinhVien(sql);
-            
-            JOptionPane.showMessageDialog(this, "Sửa thành công thông tin sinh viên !!!");
+        if(rdnam.isSelected()){
+             gt = String.valueOf(rdnam.getText()) ;
         }
-          }
-               }
-          }
+        if(rdnu.isSelected()){
+              gt = String.valueOf(rdnu.getText()) ;
+        }
+        String lop1 = "update SinhVien set Hoten = '" + ten + "', ngaysinh = '" + ns + "',gioitinh='" + gt + "',diachi='" + dc + "',SDT='" + sdt + "',email='" + email + "',dantoc='" + dt + "',CMND='" + cmnd + "',lop='" + tenlop + "',malop='" + malop + "' "
+              + "where msv = '" + msv + "'";
+        try {
+            if(txtmsv.getText().equals("")||txttsv.getText().equals("")||txtns.getText().equals("")||txtemail.getText().equals("")||txtcmnd.getText().equals("")||txtdt.getText().equals("")||txtdc.getText().equals("")||txtstd.getText().equals("")||gt.equals("")){
+                  throw new Exception("Bạn cần cung cấp đầy đủ thông tin !!! ");
+        } else { 
+            if(!arr_hocsinh.contains(new SinhVien(txtmsv.getText()))){
+                throw new Exception("Không được phép đổi mã sinh viên");
+            } else {
+                conn.doSQL(lop1);
+                arr_hocsinh.clear();
+                String sql = "Select * from SinhVien";
+                if (conn.getData_SinhVien(sql) != null) { 
+                    arr_hocsinh = conn.getData_SinhVien(sql);
+                    JOptionPane.showMessageDialog(this, "Sửa thành công thông tin sinh viên !!!");
+                  }
+                }
+            }
+        }
         catch (Exception e) {
-            System.out.println(e.getMessage());
-
+            JOptionPane.showMessageDialog(this,e.getMessage());
         }
         
         loadTableSinhVien();
-            Xoatrang1();
-            cbmlsv.removeAllItems();
-            loadComboMaLop1();
-            cblopsv.removeAllItems();
-            loadComboTenLop();
-    }//GEN-LAST:event_btnsuaActionPerformed
+        xoaTrangSinhVien();
+        cbmlsv.removeAllItems();
+        loadComboMaLop1();
+        cblopsv.removeAllItems();
+        loadComboTenLop();
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
         // TODO add your handling code here:
-        if(!arr_hocsinh.contains(new SinhVien(txtmsv.getText()))){
-                JOptionPane.showMessageDialog(this, "Mã Sinh Viên không có !!! ", "Thông báo", JOptionPane.OK_OPTION);
-                } else{
-        int dlr = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn xóa không ???", "Thông báo", JOptionPane.YES_NO_OPTION);
-        if (dlr == JOptionPane.YES_OPTION) {
-            dong = tablesv.getSelectedRow();
-            if (dong != -1) {
-                String masv = arr_hocsinh.get(dong).getMsv();
-                String sql = "delete from SinhVien where msv = '" + masv + "'";
-                conn.doSQL(sql);
-                arr_hocsinh.clear();
-                String sql_lop = "Select * from SinhVien";
-                if (conn.getData_SinhVien(sql_lop) != null) {
-                    arr_hocsinh = conn.getData_SinhVien(sql_lop);
-                    JOptionPane.showMessageDialog(this, "Xóa thành công thông tin sinh viên !!!");
-                }  
+        try {
+            if(!arr_hocsinh.contains(new SinhVien(txtmsv.getText()))){
+                throw new Exception("Không tồn tại mã sinh viên này");
             }
+            int dlr = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn xóa không ???", "Thông báo", JOptionPane.YES_NO_OPTION);
+            if (dlr == JOptionPane.YES_OPTION) { 
+                dong = tablesv.getSelectedRow();
+                if (dong != -1) { {
+                }
+                    String masv = arr_hocsinh.get(dong).getMsv();
+                    String sql = "delete from SinhVien where msv = '" + masv + "'";
+                    conn.doSQL(sql);
+                    arr_hocsinh.clear();
+                    String sql_lop = "Select * from SinhVien";
+                    if (conn.getData_SinhVien(sql_lop) != null) {
+                        arr_hocsinh = conn.getData_SinhVien(sql_lop);
+                        JOptionPane.showMessageDialog(this, "Xóa thành công thông tin sinh viên !!!");
+                    }  
+                }
             }
         }
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
         
-                    loadTableSinhVien();
-                    Xoatrang1();
-                    cbmlsv.removeAllItems();
-                    loadComboMaLop1();
-                    cblopsv.removeAllItems();
-                    loadComboTenLop();
+        loadTableSinhVien();
+        xoaTrangSinhVien();
+        cbmlsv.removeAllItems();
+        loadComboMaLop1();
+        cblopsv.removeAllItems();
+        loadComboTenLop();
     }//GEN-LAST:event_btnxoaActionPerformed
 
-    private void btnxoatrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoatrangActionPerformed
+    private void btnXoaTrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTrangActionPerformed
         // TODO add your handling code here:
-        Xoatrang1();
-    }//GEN-LAST:event_btnxoatrangActionPerformed
+        xoaTrangSinhVien();
+    }//GEN-LAST:event_btnXoaTrangActionPerformed
 
-    private void btntailaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntailaiActionPerformed
+    private void btnTaiLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaiLaiActionPerformed
         // TODO add your handling code here:
+        String sql_hs = "select * from SinhVien";
+        arr_hocsinh = conn.getData_SinhVien(sql_hs);
         loadTableSinhVien();
-    }//GEN-LAST:event_btntailaiActionPerformed
+    }//GEN-LAST:event_btnTaiLaiActionPerformed
 
-    private void btnsapxepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsapxepActionPerformed
+    private void btnSapXepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSapXepActionPerformed
         // TODO add your handling code here:
-         Comparator<SinhVien> c = new Comparator<SinhVien>() {
-
-              
+        Comparator<SinhVien> c = new Comparator<SinhVien>() {
              @Override
              public int compare(SinhVien o1, SinhVien o2) {
-                 return o1.getTensv().compareToIgnoreCase(o2.getTensv());
-//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                  if(o1.getLop().equalsIgnoreCase(o2.getLop())) {
+                    return o1.getGioitinh().compareToIgnoreCase(o2.getGioitinh());
+                 } else {
+                    return o1.getLop().compareToIgnoreCase(o2.getLop());
+                 }
              }
             };
-            Collections.sort(arr_hocsinh,c);
-            loadTableSinhVien();
-    }//GEN-LAST:event_btnsapxepActionPerformed
+        Collections.sort(arr_hocsinh,c);
+        loadTableSinhVien();
+    }//GEN-LAST:event_btnSapXepActionPerformed
 
     private void tablesvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablesvMouseClicked
         // TODO add your handling code here:
         dong = tablesv.getSelectedRow();
         SinhVien as = arr_hocsinh.get(dong);
-          txtmsv.setText(as.getMsv());
-          txttsv.setText(as.getTensv());
-          txtstd.setText(as.getSdt());
-          txtns.setText(as.getNgaysinh().toString());
-          txtdt.setText(as.getDantoc());
-          txtdc.setText(as.getDiachi());
-          txtcmnd.setText(as.getCmnd());
-          txtemail.setText(as.getEmail());
-          cbmlsv.setSelectedItem(as.getMalop());
-          cblopsv.setSelectedItem(as.getLop());
-          dong = -1;
+        txtmsv.setText(as.getMsv());
+        txttsv.setText(as.getTensv());
+        txtstd.setText(as.getSdt());
+        txtns.setText(as.getNgaysinh().toString());
+        txtdt.setText(as.getDantoc());
+        txtdc.setText(as.getDiachi());
+        txtcmnd.setText(as.getCmnd());
+        txtemail.setText(as.getEmail());
+        cbmlsv.setSelectedItem(as.getMalop());
+        cblopsv.setSelectedItem(as.getLop());
+        dong = -1;
     }//GEN-LAST:event_tablesvMouseClicked
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
         // TODO add your handling code here:
         ArrayList<SinhVien> sv = new ArrayList<>();
         if (rdtkmsv.isSelected()) {
@@ -2322,21 +2289,24 @@ try{
         }
 
         tablesv.setModel(new CustomTableSinhVien(sv));
-    }//GEN-LAST:event_jButton7ActionPerformed
-public void Xoatrang2(){
-    txtmsvkt.setText("");
-    txtmkt.setText("");
-    txttkt.setText("");
-    txthtkt.setText("");
-}
+    }//GEN-LAST:event_btnTimKiemActionPerformed
+    //    KET THUC SINH VIEN
+    
+    
+//    KHEN THUONG
+    public void Xoatrang2(){
+        txtmsvkt.setText("");
+        txtmkt.setText("");
+        txttkt.setText("");
+        txthtkt.setText("");
+    }
+    
     private void btnthemktActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemktActionPerformed
         // TODO add your handling code here:
-          String msv = txtmsvkt.getText();
-          String mkt = txtmkt.getText();
-          String tkt =txttkt.getText();
-          String ht =txthtkt.getText();
-          
-          
+        String msv = txtmsvkt.getText();
+        String mkt = txtmkt.getText();
+        String tkt =txttkt.getText();
+        String ht =txthtkt.getText();
           
         String lop1 = "insert into KhenThuong values('" + msv + "','" + mkt + "','" + tkt + "','" + ht + "')";
            try {
@@ -2359,8 +2329,6 @@ public void Xoatrang2(){
         
         loadTableKhenThuong();
         Xoatrang2();
-        
-        
     }//GEN-LAST:event_btnthemktActionPerformed
 
     private void btnxoaktActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaktActionPerformed
@@ -2441,7 +2409,9 @@ public void Xoatrang2(){
             Collections.sort(arr_khenthuong,c);
             loadTableKhenThuong();
     }//GEN-LAST:event_btnsapxepktActionPerformed
-
+// KET THUC KHEN THUONG
+    
+//    LOP
     private void btnthemlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemlActionPerformed
         // TODO add your handling code here:
           String nganh = txtnganh.getText();
@@ -2479,12 +2449,13 @@ public void Xoatrang2(){
         
         
     }//GEN-LAST:event_btnthemlActionPerformed
-public void Xoatrang3(){
-    txtnganh.setText("");
-    txtss.setText("0");
-    txttll.setText("");
-    txtmll.setText("");
-}
+    
+    public void Xoatrang3(){
+        txtnganh.setText("");
+        txtss.setText("0");
+        txttll.setText("");
+        txtmll.setText("");
+    }
 
     private void btnsualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsualActionPerformed
         // TODO add your handling code here:
@@ -2586,6 +2557,7 @@ public void Xoatrang3(){
         Xoatrang3();
     }//GEN-LAST:event_btnxoatranglActionPerformed
 
+    // TIM KIEM LOP
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         ArrayList<Lop> sv = new ArrayList<>();
@@ -2607,7 +2579,7 @@ public void Xoatrang3(){
         tablelop.setModel(new CustonTableLop(sv));
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    // KY LUAT by TCC
+    // KY LUAT
     private void tableklMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableklMouseClicked
         dong = tablekl.getSelectedRow();
         KyLuat as = arr_kyluat.get(dong);
@@ -2631,7 +2603,6 @@ public void Xoatrang3(){
         xoaTrangKyLuat();
     }//GEN-LAST:event_btnxoatrangklActionPerformed
 
-    // Sap xep theo msv neu msv trung sap theo mkl
     private void btnsapxepklActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsapxepklActionPerformed
          Comparator<KyLuat> c = new Comparator<KyLuat>() {
             @Override
@@ -2734,7 +2705,9 @@ public void Xoatrang3(){
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
     }//GEN-LAST:event_btnsuaklActionPerformed
-    // =========GIA ĐÌNH START===========
+    // HET KY LUAT
+
+// =========GIA ĐÌNH START===========
     public void XoatrangGD() {
         txtmsvgd.setText("");
         txttenbo.setText("");
@@ -2919,7 +2892,7 @@ public void Xoatrang3(){
         
     }//GEN-LAST:event_btnsuagdActionPerformed
 
-    private void txtXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtXuatActionPerformed
+    private void btnXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatActionPerformed
         // TODO add your handling code here:
         final String excelFile = "SinhVien.xlsx";
         
@@ -2933,7 +2906,7 @@ public void Xoatrang3(){
         }catch(Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }//GEN-LAST:event_txtXuatActionPerformed
+    }//GEN-LAST:event_btnXuatActionPerformed
 
     private void txtmkm2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmkm2ActionPerformed
         // TODO add your handling code here:
@@ -3019,16 +2992,19 @@ public void Xoatrang3(){
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnsapxep;
+    private javax.swing.JButton btnSapXep;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnTaiLai;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnTimKiem;
+    private javax.swing.JButton btnXoaTrang;
+    private javax.swing.JButton btnXuat;
     private javax.swing.JButton btnsapxepkl;
     private javax.swing.JButton btnsapxepkt;
-    private javax.swing.JButton btnsua;
     private javax.swing.JButton btnsuagd;
     private javax.swing.JButton btnsuakl;
     private javax.swing.JButton btnsuakt;
     private javax.swing.JButton btnsual;
-    private javax.swing.JButton btntailai;
-    private javax.swing.JButton btnthem;
     private javax.swing.JButton btnthemgd;
     private javax.swing.JButton btnthemkl;
     private javax.swing.JButton btnthemkt;
@@ -3038,7 +3014,6 @@ public void Xoatrang3(){
     private javax.swing.JButton btnxoakl;
     private javax.swing.JButton btnxoakt;
     private javax.swing.JButton btnxoal;
-    private javax.swing.JButton btnxoatrang;
     private javax.swing.JButton btnxoatranggd;
     private javax.swing.JButton btnxoatrangkl;
     private javax.swing.JButton btnxoatrangkt;
@@ -3056,7 +3031,6 @@ public void Xoatrang3(){
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
@@ -3165,7 +3139,6 @@ public void Xoatrang3(){
     private javax.swing.JTable tablekt;
     private javax.swing.JTable tablelop;
     private javax.swing.JTable tablesv;
-    private javax.swing.JButton txtXuat;
     private javax.swing.JTextField txtcmnd;
     private javax.swing.JTextField txtdantocace;
     private javax.swing.JTextField txtdantocbo;
