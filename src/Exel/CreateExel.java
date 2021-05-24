@@ -143,13 +143,9 @@ public class CreateExel {
     }
 
     private static void taoFile(Workbook workbook, String excelFile) throws FileNotFoundException, IOException {
-        if(new File(excelFile).exists()){
-            new File(excelFile).delete();
-        }
         OutputStream fileOut = new FileOutputStream(excelFile);
         workbook.write(fileOut);
         fileOut.close();
-        
     }
 
     private static void autoFix(Sheet sheet, int soLuongCot) {
