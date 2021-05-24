@@ -1,11 +1,13 @@
 package Exel;
 
 import Model.SinhVien;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
+import static org.apache.poi.hssf.usermodel.HeaderFooter.file;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -36,7 +38,8 @@ public class CreateExel {
     
     public static void taoExcel(List<SinhVien> ds, String excelFile) throws IOException {
         int rowIndex = 0;
-       
+        workbook = new XSSFWorkbook();
+        sheet = workbook.createSheet("Danh sách khách hàng");
         // Viet tieu de
         vietTieuDe(sheet, rowIndex);
  
@@ -140,8 +143,13 @@ public class CreateExel {
     }
 
     private static void taoFile(Workbook workbook, String excelFile) throws FileNotFoundException, IOException {
-         OutputStream fileOut = new FileOutputStream(excelFile);
-         workbook.write(fileOut);
+        if(new File(excelFile).exists()){
+            new File(excelFile).delete();
+        }
+        OutputStream fileOut = new FileOutputStream(excelFile);
+        workbook.write(fileOut);
+        fileOut.close();
+        
     }
 
     private static void autoFix(Sheet sheet, int soLuongCot) {
