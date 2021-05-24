@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Danh/Java/HERE1/qlsvJava/src/DAO/AddData.java</file>
-            <file>file:/D:/Danh/Java/HERE1/qlsvJava/src/View/MainJFrame.java</file>
-            <file>file:/D:/Danh/Java/HERE1/qlsvJava/src/View/DangNhapJFrame.java</file>
-            <file>file:/D:/Danh/Java/HERE1/qlsvJava/src/Main/Main.java</file>
-            <file>file:/D:/Danh/Java/HERE1/qlsvJava/src/DAO/CreateTable.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL3_FINAL/qlsvJava/src/DAO/ConnectDB.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL3_FINAL/qlsvJava/src/Main/Main.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL3_FINAL/qlsvJava/src/Model/SinhVien.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL3_FINAL/qlsvJava/src/Model/Lop.java</file>
+            <file>file:/D:/TAI_LIEU_NAM_4/Java/BTL3_FINAL/qlsvJava/src/View/MainJFrame.java</file>
         </group>
     </open-files>
 </project-private>

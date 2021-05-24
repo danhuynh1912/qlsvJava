@@ -21,10 +21,13 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -55,6 +58,9 @@ public class MainJFrame extends javax.swing.JFrame {
         jpnView.add(jpnTrangC);
         jpnView.repaint();
         jpnView.revalidate();
+        
+        rdnam.setSelected(true);
+        rdtkmsv.setSelected(true);
         
         CenteredFrame(this);
         DaTa();
@@ -551,7 +557,7 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
         );
 
         jpnLop.setBackground(new java.awt.Color(0, 204, 0));
@@ -934,7 +940,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 54, Short.MAX_VALUE))
+                .addGap(20, 29, Short.MAX_VALUE))
             .addGroup(jpnSvLayout.createSequentialGroup()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
@@ -1108,7 +1114,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
@@ -1583,7 +1589,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnKlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3))
@@ -1801,7 +1807,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jpnLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpnLLayout.createSequentialGroup()
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 86, Short.MAX_VALUE))
+                        .addGap(0, 57, Short.MAX_VALUE))
                     .addComponent(jScrollPane4))
                 .addContainerGap())
         );
@@ -1929,7 +1935,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jLabel56)
                 .addGap(45, 45, 45)
                 .addComponent(jLabel57)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
                 .addComponent(jLabel58)
                 .addGap(33, 33, 33))
         );
@@ -1983,7 +1989,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnMenuLayout.createSequentialGroup()
-                    .addContainerGap(235, Short.MAX_VALUE)
+                    .addContainerGap(303, Short.MAX_VALUE)
                     .addComponent(jpnView, javax.swing.GroupLayout.PREFERRED_SIZE, 1095, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(20, 20, 20)))
         );
@@ -2010,8 +2016,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnMenuLayout.createSequentialGroup()
-                    .addContainerGap(39, Short.MAX_VALUE)
-                    .addComponent(jpnView, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(50, Short.MAX_VALUE)
+                    .addComponent(jpnView, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
 
@@ -2092,6 +2098,9 @@ public class MainJFrame extends javax.swing.JFrame {
     // SINH VIEN
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        
+        SinhVien sv = new SinhVien();
+        
         String msv = txtmsv.getText();
         String ten = txttsv.getText();
         String sdt = txtstd.getText();
@@ -2101,45 +2110,76 @@ public class MainJFrame extends javax.swing.JFrame {
         String cmnd = txtcmnd.getText();
         String email = txtemail.getText();
         String malop = cbmlsv.getSelectedItem().toString();
-        String tenlop = cblopsv.getSelectedItem().toString();
+        String tenlop="";
         String gt="";
+          
+        //Gioi tinh
         if(rdnam.isSelected()){
             gt = String.valueOf(rdnam.getText()) ;
         }
         if(rdnu.isSelected()){
             gt = String.valueOf(rdnu.getText()) ;
         }
-        String lop1 = "insert into SinhVien values('" + msv + "','" + ten + "','" + ns + "','" + gt + "','" + dc + "','" + sdt + "','" + email + "','" + dt + "','" + cmnd + "','" + tenlop + "','" + malop + "')";
-
+        
+        //Lop
+        int vitri = arr_Lop.indexOf(new Lop(malop));
+        tenlop = arr_Lop.get(vitri).getTenlop();    
+        
+        //Ngay Sinh
+        Date ns_copy = null;
+        try{
+            ns_copy=new SimpleDateFormat("yyyy-MM-dd").parse(ns);  
+        }
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(this, "Ngày sinh phải có dạng yyyy-MM-dd"); 
+        }
+        
         try {
-            if(txtmsv.getText().equals("")||txttsv.getText().equals("")||txtns.getText().equals("")||txtemail.getText().equals("")||txtcmnd.getText().equals("")||txtdt.getText().equals("")||txtdc.getText().equals("")||txtstd.getText().equals("")||gt.equals("")){
-                throw new Exception("Bạn cần cung cấp đầy đủ thông tin !!! ");
-            } else { 
+            sv.setMsv(msv);
+            sv.setTensv(ten);
+            sv.setSdt(sdt);
+            sv.setDantoc(dt);
+            sv.setDiachi(dc);
+            sv.setCmnd(cmnd);
+            sv.setNgaysinh(ns_copy);
+            sv.setEmail(email);
+            sv.setMalop(malop);
+            sv.setLop(tenlop);
+            sv.setGioitinh(gt);
+            
+            String lop1 = "insert into SinhVien values('" + msv + "','" + ten + "','" + ns + "','" + gt + "','" + dc + "','" + sdt + "','" + email + "','" + dt + "','" + cmnd + "','" + tenlop + "','" + malop + "')";
+            
             if(arr_hocsinh.contains(new SinhVien(txtmsv.getText()))){
                 throw new Exception("Mã sinh viên đã tồn tại !!! ");
             } else {
                 conn.doSQL(lop1);
                 arr_hocsinh.clear();
+                
                 String sql = "Select * from SINHVIEN";
                 if (conn.getData_SinhVien(sql) != null) {
                     arr_hocsinh = conn.getData_SinhVien(sql);
                 }
                 JOptionPane.showMessageDialog(this, "Thêm thành công thông tin sinh viên !!!");  
-                }
             }
+            
+        } catch(Exception e) {
+           JOptionPane.showMessageDialog(this, e.getMessage()); 
         }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());  
-        }
+        
         loadTableSinhVien();
         xoaTrangSinhVien();
+        
         cbmlsv.removeAllItems();
         loadComboMaLop1();
         cblopsv.removeAllItems();
         loadComboTenLop();
     }//GEN-LAST:event_btnThemActionPerformed
 
+    
+    
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        SinhVien sv = new SinhVien();
+        
         String msv = txtmsv.getText();
         String ten = txttsv.getText();
         String sdt =txtstd.getText();
@@ -2152,18 +2192,44 @@ public class MainJFrame extends javax.swing.JFrame {
         String tenlop = cblopsv.getSelectedItem().toString();
         String gt="";
           
+        //Gioi tinh
         if(rdnam.isSelected()){
              gt = String.valueOf(rdnam.getText()) ;
         }
         if(rdnu.isSelected()){
               gt = String.valueOf(rdnu.getText()) ;
         }
-        String lop1 = "update SinhVien set Hoten = '" + ten + "', ngaysinh = '" + ns + "',gioitinh='" + gt + "',diachi='" + dc + "',SDT='" + sdt + "',email='" + email + "',dantoc='" + dt + "',CMND='" + cmnd + "',lop='" + tenlop + "',malop='" + malop + "' "
-              + "where msv = '" + msv + "'";
+        
+        //Lop
+        int vitri = arr_Lop.indexOf(new Lop(malop));
+        tenlop = arr_Lop.get(vitri).getTenlop();    
+        
+        //Ngay Sinh
+        Date ns_copy = null;
+        try{
+            ns_copy=new SimpleDateFormat("yyyy-MM-dd").parse(ns);  
+        }
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(this, "Ngày sinh phải có dạng yyyy-MM-dd"); 
+        }
+        
+        
         try {
-            if(txtmsv.getText().equals("")||txttsv.getText().equals("")||txtns.getText().equals("")||txtemail.getText().equals("")||txtcmnd.getText().equals("")||txtdt.getText().equals("")||txtdc.getText().equals("")||txtstd.getText().equals("")||gt.equals("")){
-                  throw new Exception("Bạn cần cung cấp đầy đủ thông tin !!! ");
-        } else { 
+            sv.setMsv(msv);
+            sv.setTensv(ten);
+            sv.setSdt(sdt);
+            sv.setDantoc(dt);
+            sv.setDiachi(dc);
+            sv.setCmnd(cmnd);
+            sv.setNgaysinh(ns_copy);
+            sv.setEmail(email);
+            sv.setMalop(malop);
+            sv.setLop(tenlop);
+            sv.setGioitinh(gt);
+            
+            String lop1 = "update SinhVien set Hoten = '" + ten + "', ngaysinh = '" + ns + "',gioitinh='" + gt + "',diachi='" + dc + "',SDT='" + sdt + "',email='" + email + "',dantoc='" + dt + "',CMND='" + cmnd + "',lop='" + tenlop + "',malop='" + malop + "' "
+              + "where msv = '" + msv + "'";
+            
             if(!arr_hocsinh.contains(new SinhVien(txtmsv.getText()))){
                 throw new Exception("Không được phép đổi mã sinh viên");
             } else {
@@ -2172,17 +2238,16 @@ public class MainJFrame extends javax.swing.JFrame {
                 String sql = "Select * from SinhVien";
                 if (conn.getData_SinhVien(sql) != null) { 
                     arr_hocsinh = conn.getData_SinhVien(sql);
-                    JOptionPane.showMessageDialog(this, "Sửa thành công thông tin sinh viên !!!");
-                  }
                 }
+                JOptionPane.showMessageDialog(this, "Sửa thành công thông tin sinh viên !!!");
             }
-        }
-        catch (Exception e) {
+        }catch(Exception e) {
             JOptionPane.showMessageDialog(this,e.getMessage());
         }
         
         loadTableSinhVien();
         xoaTrangSinhVien();
+        
         cbmlsv.removeAllItems();
         loadComboMaLop1();
         cblopsv.removeAllItems();
@@ -2207,8 +2272,8 @@ public class MainJFrame extends javax.swing.JFrame {
                     String sql_lop = "Select * from SinhVien";
                     if (conn.getData_SinhVien(sql_lop) != null) {
                         arr_hocsinh = conn.getData_SinhVien(sql_lop);
-                        JOptionPane.showMessageDialog(this, "Xóa thành công thông tin sinh viên !!!");
                     }  
+                    JOptionPane.showMessageDialog(this, "Xóa thành công thông tin sinh viên !!!");
                 }
             }
         }
@@ -2218,6 +2283,7 @@ public class MainJFrame extends javax.swing.JFrame {
         
         loadTableSinhVien();
         xoaTrangSinhVien();
+        
         cbmlsv.removeAllItems();
         loadComboMaLop1();
         cblopsv.removeAllItems();
@@ -2274,16 +2340,22 @@ public class MainJFrame extends javax.swing.JFrame {
         ArrayList<SinhVien> sv = new ArrayList<>();
         if (rdtkmsv.isSelected()) {
             sv.clear();
-            for (int i = 0; i < arr_hocsinh.size(); i++) {
-                if (txtmsv.getText().equals(arr_hocsinh.get(i).getMsv())) {
-                    sv.add(arr_hocsinh.get(i));
+            Iterator<SinhVien> it = arr_hocsinh.iterator();
+            while (it.hasNext()) {
+                SinhVien sv1 = it.next();
+                
+                if(sv1.getMsv().equalsIgnoreCase(txtmsv.getText())) {
+                    sv.add(sv1);
                 }
             }
         } else if (rdtkml.isSelected()) {
             sv.clear();
-            for (int i = 0; i < arr_hocsinh.size(); i++) {
-                if (cbmlsv.getSelectedItem().toString().equals(arr_hocsinh.get(i).getMalop())) {
-                    sv.add(arr_hocsinh.get(i));
+            Iterator<SinhVien> it = arr_hocsinh.iterator();
+            while (it.hasNext()) {
+                SinhVien sv1 = it.next();
+                
+                if(sv1.getMalop().equalsIgnoreCase(cbmlsv.getSelectedItem().toString())) {
+                    sv.add(sv1);
                 }
             }
         }
@@ -2982,12 +3054,20 @@ public class MainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    // Sinh Vien
     private void cbmlsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmlsvActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:       
+        if(cbmlsv.getSelectedIndex()!=-1) {
+            String malop = cbmlsv.getSelectedItem().toString();
+            int vitri = arr_Lop.indexOf(new Lop(malop));
+            String tenlop = arr_Lop.get(vitri).getTenlop();
+            cblopsv.setSelectedItem(tenlop);
+        }
     }//GEN-LAST:event_cbmlsvActionPerformed
 
     private void cblopsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cblopsvActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_cblopsvActionPerformed
 
     

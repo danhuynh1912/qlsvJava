@@ -30,23 +30,54 @@ public class SinhVien{
     public SinhVien() {
     }
 
-    public void setMsv(String msv) {
+    public void setMsv(String msv) throws Exception {
+        if(msv.trim().equals("")) {
+            throw new Exception("Mã sinh viên không được để trống!!!");
+        } 
         this.msv = msv;
     }
 
-    public void setTensv(String tensv) {
+    public void setTensv(String tensv) throws Exception {
+        if(tensv.trim().equals("")) {
+            throw new Exception("Tên sinh viên không được để trống!!!");
+        } 
         this.tensv = tensv;
     }
+    
+    public boolean isNumber(String string) {
+        try {
+            Long intValue = Long.parseLong(string);
+            return true;
+        } catch (NumberFormatException e) {
+            System.out.println("Không phải là số");
+        }
+        return false;
+    }
 
-    public void setSdt(String sdt) {
+    public void setSdt(String sdt) throws Exception {
+        if(sdt.trim().equals("")) {
+            throw new Exception("Số điện thoại không được để trống!!!");
+        } 
+        if(!isNumber(sdt)){
+            throw new Exception("Số điện thoại chỉ bao gồm số!!");
+        }
+        if(sdt.trim().length()<10) {
+            throw new Exception("Số điện thoại phải >= 10 chữ số!!");
+        }
         this.sdt = sdt;
     }
 
-    public void setDiachi(String diachi) {
+    public void setDiachi(String diachi) throws Exception {
+        if(diachi.trim().equals("")) {
+            throw new Exception("Địa chỉ không được để trống!!!");
+        } 
         this.diachi = diachi;
     }
 
-    public void setDantoc(String dantoc) {
+    public void setDantoc(String dantoc) throws Exception {
+        if(dantoc.trim().equals("")) {
+            throw new Exception("Dân tộc không được để trống!!!");
+        } 
         this.dantoc = dantoc;
     }
 
@@ -54,15 +85,29 @@ public class SinhVien{
         this.lop = lop;
     }
 
-    public void setCmnd(String cmnd) {
+    public void setCmnd(String cmnd) throws Exception {
+        if(cmnd.trim().equals("")) {
+            throw new Exception("CMND không được để trống!!!");
+        } 
         this.cmnd = cmnd;
     }
 
-    public void setEmail(String email) {
+    public boolean isEmail(String email) {
+      String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+      return email.matches(regex);
+    }
+    
+    public void setEmail(String email) throws Exception {
+        if(email.trim().equals("")) {
+            throw new Exception("Email không được để trống!!!");
+        } 
+        if(!isEmail(email)) {
+            throw new Exception("Email phải có dạng: abc@def.xyz");
+        }
         this.email = email;
     }
 
-    public void setGioitinh(String gioitinh) {
+    public void setGioitinh(String gioitinh) throws Exception {
         this.gioitinh = gioitinh;
     }
 
